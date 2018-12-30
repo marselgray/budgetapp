@@ -7,20 +7,22 @@ The primary logic behind this application is through JavaScript.
 
 ## Planning:
 
-####### UI Module
+### UI Module
 * Get input values
 * Add the new item to the UI
 * Update the UI
 
-####### Data Module
+### Data Module
 * Add the new item to the data structure
 * calculate budget
 
-####### Controller Module
+### Controller Module
 * Add event handler 
 
 
 ## Execution:
 
 ## JavaScript concepts used:
-
+* Module pattern
+* Data Encapsulation 
+* Separation of concerns 

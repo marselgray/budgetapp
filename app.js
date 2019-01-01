@@ -78,14 +78,16 @@ var UIController = (function(){
             return{
                 type: document.querySelector(DOMstrings.inputType).value,
                 description: document.querySelector(DOMstrings.inputDescription).value,
-                value: document.querySelector(DOMstrings.inputValue).value,
+                // value returns a string, but needs to be an integer
+                // parseFloat() converts a string number into an integer number https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseFloat 
+                value: parseFloat(document.querySelector(DOMstrings.inputValue).value),
             };
         },
 
         addListItem: function(obj, type){
             var html, newHTML, element;
             
-            // create HTML string with placeholder text
+            // 1. create HTML string with placeholder text
             
             if (type === 'inc') {
                 element = DOMstrings.incomeContainer;
@@ -95,13 +97,13 @@ var UIController = (function(){
                 html = '<div class="item clearfix"id="expense-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
             }
 
-            // replace the plcceholder text with actual data
+            // 2. replace the plcceholder text with actual data
 
             newHTML = html.replace('%id%', obj.id);
             newHTML = newHTML.replace('%description%', obj.description);
             newHTML = newHTML.replace('%value%', obj.value);
 
-            // insert the HTML into the DOM    https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML
+            // 3. insert the HTML into the DOM    https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML
             document.querySelector(element).insertAdjacentHTML('beforeend', newHTML);
         },
 
@@ -150,6 +152,15 @@ var controller = (function(budgetCtrl, UICtrl){
 
     };
 
+    var updateBudget = function(){
+
+        // 1. calculate the budget
+
+        // 2. return the budget
+
+        // 3. display the budget  on the UI
+    };
+
     var ctrlAddItem = function (){
 
         var input, newItem;
@@ -157,17 +168,25 @@ var controller = (function(budgetCtrl, UICtrl){
         // 1. get the field input data
         input = UICtrl.getinput();
 
-        // 2. add the item to the budget controller
-        newItem = budgetCtrl.addItem(input.type, input.description, input.value);
+        // inputs need to have a string and be both a number AND a number greater than 0
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isNaN
+        if(input.description !== "" && !isNaN(input.value) && input.value > 0){
 
-        // 3. add the item to the UI 
-        UICtrl.addListItem(newItem, input.type);
+            // 2. add the item to the budget controller
+            newItem = budgetCtrl.addItem(input.type, input.description, input.value);
 
-        // 4. Clear the fields
-        UICtrl.clearFields();
+            // 3. add the item to the UI 
+            UICtrl.addListItem(newItem, input.type);
 
-        // 5. calculate the budget
-        // 6. display the budget  on the UI
+            // 4. clear the fields
+            UICtrl.clearFields();
+
+            // 5. calculate and update budget
+            updateBudget();
+        } else {
+            alert('you must enter a description AND a number value');
+        }
+
     };
 
     return {

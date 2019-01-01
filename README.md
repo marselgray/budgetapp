@@ -31,4 +31,5 @@ I built this step by step over a few weeks using protypes and various references
 * Data Structures/ Passing Data from one structure to another 
 * DOM manipulation using insertAdjacentHTML 
 * Loops 
+* convert field inputs into numbers
 

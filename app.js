@@ -91,8 +91,8 @@ var UIController = (function(){
                 element = DOMstrings.incomeContainer;
                 html = '<div class="item clearfix"id="income-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
             } else if (type === 'exp') {
-                element.DOMstrings.expensesContainer;
-                html = '<div class="item clearfix" id="expense-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
+                element = DOMstrings.expensesContainer;
+                html = '<div class="item clearfix"id="expense-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
             }
 
             // replace the plcceholder text with actual data
@@ -102,7 +102,23 @@ var UIController = (function(){
             newHTML = newHTML.replace('%value%', obj.value);
 
             // insert the HTML into the DOM    https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML
-            document.querySelector(element).insertAdjacentElement('beforeend', newHTML);
+            document.querySelector(element).insertAdjacentHTML('beforeend', newHTML);
+        },
+
+        clearFields: function(){
+            var fields, fieldsArray; 
+
+            fields = document.querySelectorAll(DOMstrings.inputDescription + ', ' + DOMstrings.inputValue)
+            
+            fieldsArray = Array.prototype.slice.call(fields);
+            
+            fieldsArray.forEach(function(current, index, array){
+                current.value = '';
+
+            })
+
+            fieldsArray[0].focus();
+            
         },
 
         getDOMstrings: function(){
@@ -147,8 +163,11 @@ var controller = (function(budgetCtrl, UICtrl){
         // 3. add the item to the UI 
         UICtrl.addListItem(newItem, input.type);
 
-        // 4. calculate the budget
-        // 5. display the budget  on the UI
+        // 4. Clear the fields
+        UICtrl.clearFields();
+
+        // 5. calculate the budget
+        // 6. display the budget  on the UI
     };
 
     return {

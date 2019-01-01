@@ -21,6 +21,7 @@ The primary logic behind this application is through JavaScript.
 
 
 ## Execution:
+I built this step by step over a few weeks using protypes and various references from the web, cited in the project to aid my code and project
 
 ## JavaScript concepts used:
 * Module pattern
@@ -29,4 +30,5 @@ The primary logic behind this application is through JavaScript.
 * Event listeners 
 * Data Structures/ Passing Data from one structure to another 
 * DOM manipulation using insertAdjacentHTML 
+* Loops 
 

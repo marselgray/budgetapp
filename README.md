@@ -27,3 +27,4 @@ The primary logic behind this application is through JavaScript.
 * Data Encapsulation 
 * Separation of concerns 
 * Event listeners 
+* Data Structures/ Passing Data from one structure to another 

@@ -5,6 +5,12 @@ This is a simple budget app build using HTML, CSS, and JavaScript.
 
 The primary logic behind this application is through JavaScript.
 
+## Design:
+
+
+![](design.png)
+
+
 ## Planning:
 
 ### UI Module
@@ -21,7 +27,7 @@ The primary logic behind this application is through JavaScript.
 
 
 ## Execution:
-I built this step by step over a few weeks using protypes and various references from the web, cited in the project to aid my code and project
+I built this step by step over a few weeks using protypes and various references from the web, cited in the project to aid my code and project.
 
 ## JavaScript concepts used:
 * Module pattern
@@ -33,3 +39,10 @@ I built this step by step over a few weeks using protypes and various references
 * Loops 
 * convert field inputs into numbers
 
+
+
+
+## Final Product:
+
+
+![](final.png)

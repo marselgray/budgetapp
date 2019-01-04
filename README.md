@@ -31,13 +31,14 @@ I built this step by step over a few weeks using protypes and various references
 
 ## JavaScript concepts used:
 * Module pattern
-* Data Encapsulation 
+* Data encapsulation 
 * Separation of concerns 
 * Event listeners 
-* Data Structures/ Passing Data from one structure to another 
+* Data structures/ passing data from one structure to another 
 * DOM manipulation using insertAdjacentHTML 
 * Loops 
-* convert field inputs into numbers
+* Convert field inputs into numbers
+* Event delegation
 
 
 

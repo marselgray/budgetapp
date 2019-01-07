@@ -70,6 +70,23 @@ var budgetController = (function(){
             return newItem;
         },
 
+        deleteItem: function(type, id){
+            var ids, index;
+
+            // need to loop over inc/exp array
+            // find index
+            ids = data.allItems[type].map(function(current){
+                return current.id;
+            });
+
+            index = ids.indexOf(id);
+
+            if (index != -1){
+                data.allItems[type].splice(index, 1);
+            }
+
+        },
+
         calculateBudget: function(){
             //calculate total expenses and income 
             calculateTotal('exp');
@@ -153,6 +170,12 @@ var UIController = (function(){
 
             // 3. insert the HTML into the DOM    https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML
             document.querySelector(element).insertAdjacentHTML('beforeend', newHTML);
+        },
+
+        deleteListItem: function(selectorID){
+
+            var el = document.getElementById(selectorID);
+            el.parentNode.removeChild(el);
         },
 
         clearFields: function(){
@@ -251,7 +274,7 @@ var controller = (function(budgetCtrl, UICtrl){
             // 5. calculate and update budget
             updateBudget();
         } else {
-            alert('you must enter a description AND a number value');
+            alert('you must enter BOTH a description AND a value');
         }
 
     };
@@ -265,13 +288,15 @@ var controller = (function(budgetCtrl, UICtrl){
             // need to split string inc-1 into just the inc
             splitID = itemID.split('-');
             type = splitID[0];
-            ID = splitID[1];
-            
+            ID = parseInt(splitID[1]);
+
             // 1. delete the item from data structure
+            budgetCtrl.deleteItem(type, ID);
 
             // 2. delete item from UI
-
-            // 3. update and show new budget total 
+            UICtrl.deleteListItem(itemID);
+            // 3. update and show new budget total
+             updateBudget();
         }
     };
 

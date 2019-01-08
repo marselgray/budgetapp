@@ -39,7 +39,8 @@ I built this step by step over a few weeks using protypes and various references
 * Loops 
 * Convert field inputs into numbers
 * Event delegation
-* String manipulation 
+* String manipulation
+* Change events 
 
 
 

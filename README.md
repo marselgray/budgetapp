@@ -1,4 +1,4 @@
-# The Budget App
+# The Budget App 
 
 
 This is a simple budget app build using HTML, CSS, and JavaScript.
